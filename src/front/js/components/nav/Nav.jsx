@@ -2,12 +2,13 @@
 import React from 'react';
 import {Link, IndexLink} from 'react-router';
 import classNames from 'classnames';
+import './style.scss';
 
 class Nav extends React.Component {
   constructor() {
     super();
     this.state = {
-      collapse: true
+      collapse: false
     };
   }
   toggle() {
@@ -27,14 +28,15 @@ class Nav extends React.Component {
           <ul className="nav navbar-nav">
             <li className="nav-item">
               <IndexLink to="/" className="nav-link" activeClassName="active">
-                Home
+                خانه
               </IndexLink>
             </li>
             <li className="nav-item">
               <Link to="/about" className="nav-link" activeClassName="active">
-                About
+                درباره ما
               </Link>
             </li>
+
           </ul>
         </div>
       </nav>

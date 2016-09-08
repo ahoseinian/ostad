@@ -4,12 +4,20 @@ import {Router, Route, IndexRoute, hashHistory} from 'react-router';
 import Home from './components/Home.jsx';
 import {About} from './components/About.jsx';
 import Nav from './components/nav/Nav.jsx';
+import DevTools from 'mobx-react-devtools';
+import Login from './components/auth/Login.jsx';
+import LoginStore from './stores/login';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <Nav/> {this.props.children}
+        <DevTools/>
+        <Nav/>
+        <div className="m-t-3">
+          {this.props.children}
+        </div>
+        <Login store={LoginStore}/>
       </div>
     );
   }
