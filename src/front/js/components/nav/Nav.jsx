@@ -8,7 +8,7 @@ class Nav extends React.Component {
   constructor() {
     super();
     this.state = {
-      collapse: false
+      collapse: true
     };
   }
   toggle() {

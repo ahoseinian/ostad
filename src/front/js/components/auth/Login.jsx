@@ -1,6 +1,8 @@
 'use strict';
 import React from 'react';
 import {observer} from 'mobx-react';
+import {Card} from '../common/card.jsx';
+import './style.scss';
 
 @observer
 class Login extends React.Component {
@@ -11,8 +13,10 @@ class Login extends React.Component {
       <div><LoginButton {...this.props}/><LoginForm open={open}/></div>
     );
   }
-
 }
+Login.propTypes = {
+  store: React.PropTypes.object
+};
 
 export default Login;
 
@@ -22,9 +26,9 @@ export class LoginForm extends React.Component {
     if (!this.props.open)
       return null;
     return (
-      <div>
+      <Card block className="m-x-3 pos-f-t">
         Login Form
-      </div>
+      </Card>
     );
   }
 }
@@ -37,7 +41,7 @@ export class LoginButton extends React.Component {
     this.props.store.toggle();
   }
   render() {
-    return <button className="btn btn-link" onClick={this.toggleLogin.bind(this)}>ورود</button>;
+    return <button className="btn btn-sm btn-info m-a-1" onClick={this.toggleLogin.bind(this)}>ورود</button>;
   }
 }
 

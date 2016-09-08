@@ -14,10 +14,10 @@ class App extends Component {
       <div>
         <DevTools/>
         <Nav/>
-        <div className="m-t-3">
+        <Login store={LoginStore}/>
+        <div>
           {this.props.children}
         </div>
-        <Login store={LoginStore}/>
       </div>
     );
   }
