@@ -2,7 +2,7 @@ import {observable} from 'mobx';
 
 class LoginStore {
   @observable open = false;
-  toggle(){
+  toggle=()=>{
     this.open = !this.open;
   }
 }

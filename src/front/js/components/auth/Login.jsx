@@ -1,16 +1,16 @@
 'use strict';
 import React from 'react';
 import {observer} from 'mobx-react';
-import {Card} from '../common/card.jsx';
+import Modal from '../common/Modal.jsx';
 import './style.scss';
 
 @observer
 class Login extends React.Component {
 
   render() {
-    const {open} = this.props.store;
+    const {open, toggle} = this.props.store;
     return (
-      <div><LoginButton {...this.props}/><LoginForm open={open}/></div>
+      <div><LoginButton toggle={toggle}/><LoginForm toggle={toggle} open={open}/></div>
     );
   }
 }
@@ -23,28 +23,25 @@ export default Login;
 export class LoginForm extends React.Component {
 
   render() {
-    if (!this.props.open)
+    const {open, toggle} = this.props;
+    if (!open)
       return null;
     return (
-      <Card block className="m-x-3 pos-f-t">
+      <Modal toggle={toggle} title="فرم ورود">
         Login Form
-      </Card>
+      </Modal>
     );
   }
 }
 LoginForm.propTypes = {
-  open: React.PropTypes.bool
+  open: React.PropTypes.bool,
+  toggle: React.PropTypes.func
 };
 
-export class LoginButton extends React.Component {
-  toggleLogin() {
-    this.props.store.toggle();
-  }
-  render() {
-    return <button className="btn btn-sm btn-info m-a-1" onClick={this.toggleLogin.bind(this)}>ورود</button>;
-  }
-}
+export const LoginButton = ({toggle}) => {
+  return <button className="btn btn-outline-info  m-a-1" onClick={toggle}>ورود</button>;
+};
 
 LoginButton.propTypes = {
-  store: React.PropTypes.object
+  toggle: React.PropTypes.func
 };

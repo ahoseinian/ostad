@@ -39,16 +39,20 @@ CardText.propTypes = {
   text: React.PropTypes.string
 };
 
-export const CardHeader = props => (
-  <div className="card-header bg-inverse">
-    <h3 className="h4 m-b-0  font-weight-bold">
-      <Icon name={props.icon}/> {props.text}
-    </h3>
-  </div>
-);
+export const CardHeader = ({center, icon, text}) => {
+  const cNames = classNames('card-header', {'text-xs-center': center});
+  return (
+    <div className={cNames}>
+      <h3 className="h4">
+        <Icon name={icon}/> {text}
+      </h3>
+    </div>
+  );
+};
 CardHeader.propTypes = {
   text: React.PropTypes.string.isRequired,
-  icon: React.PropTypes.string
+  icon: React.PropTypes.string,
+  center: React.PropTypes.bool
 };
 
 export const CardBlock = props => {
