@@ -1,17 +1,38 @@
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
-import {IndexLink, Link,} from 'react-router';
+import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+import {IndexLink, Link} from 'react-router';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
-import Login from '../auth/Login.jsx';
+import {LoginForm} from '../auth/Login.jsx';
 import LoginStore from '../../stores/login';
-const Nav = () => (
+import RaisedButton from 'material-ui/RaisedButton';
+import {observer} from 'mobx-react';
 
-  <AppBar iconElementRight={< DrawerSimpleExample />} iconElementLeft={< Login store = {
-    LoginStore
-  } />}/>
-);
+@observer
+class Nav extends React.Component {
+
+  render() {
+    const {user, toggle, open} = LoginStore;
+    const loginBtn = user
+      ? <RaisedButton href="/auth/logout" label="خروج"/>
+      : <RaisedButton onTouchTap={toggle} label="ورود"/>;
+    return (
+      <Toolbar className="bg-info">
+        <LoginForm open={open} toggle={toggle}/>
+        <ToolbarGroup firstChild={true}>
+          {loginBtn}
+        </ToolbarGroup>
+        <ToolbarGroup>
+          <ToolbarTitle text={user.displayName} className="text-uppercase"/>
+          <ToolbarSeparator />
+          <DrawerSimpleExample/>
+        </ToolbarGroup>
+      </Toolbar>
+    );
+  }
+}
 
 export default Nav;
 
