@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {render} from 'react-dom';
-import {Router, Route, IndexRoute, hashHistory,} from 'react-router';
+import {Router, Route, IndexRoute, hashHistory} from 'react-router';
 import Home from './components/Home.jsx';
 import {About} from './components/About.jsx';
 import Nav from './components/nav/Nav.jsx';
@@ -13,7 +13,9 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
 
-const muiTheme = getMuiTheme({fontFamily: 'Yekan', isRtl: true});
+const muiTheme = getMuiTheme({
+  fontFamily: 'Yekan',
+});
 class App extends Component {
   render() {
     return (
@@ -29,7 +31,7 @@ class App extends Component {
 }
 App.propTypes = {
   children: React.PropTypes.node,
-  history: React.PropTypes.object,
+  history: React.PropTypes.object
 };
 
 render((

@@ -4,6 +4,7 @@ import {observer} from 'mobx-react';
 import TextField from 'material-ui/TextField';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import './style.scss';
 
 @observer
@@ -23,15 +24,18 @@ Login.propTypes = {
 export default Login;
 
 export class LoginForm extends React.Component {
-
   render() {
-    const {open, toggle,} = this.props;
+    const floatingLabelStyle= {right:0};
+    const {open, toggle} = this.props;
     return (
-      <Dialog title="فرم ورود" open={open} contentStyle={{width:'300px'}} titleClassName='text-xs-center' onRequestClose={toggle}>
+      <Dialog title="فرم ورود" open={open} contentStyle={{
+        width: '300px'
+      }} titleClassName='text-xs-center' onRequestClose={toggle}>
         <form>
-          <TextField floatingLabelText="پست الکترونیک" type="text"/>
+          <TextField floatingLabelText="پست الکترونیک" type="text" floatingLabelStyle={floatingLabelStyle}/>
           <br/>
-          <TextField floatingLabelText="پسورد" type="password"/>
+          <TextField floatingLabelText="پسورد" type="password"  floatingLabelStyle={floatingLabelStyle}/>
+          <RaisedButton label="ورود" primary fullWidth/>
         </form>
       </Dialog>
     );
