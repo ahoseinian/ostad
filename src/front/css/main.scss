@@ -1,4 +1,8 @@
 @import '~bootstrap/scss/bootstrap-grid.scss';
+// Core variables and mixins
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/utilities';
 @font-face {
     font-family: 'Yekan';
     src: url(./YekanWeb-Regular.woff);

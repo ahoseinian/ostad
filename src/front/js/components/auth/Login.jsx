@@ -1,8 +1,8 @@
 'use strict';
 import React from 'react';
 import {observer} from 'mobx-react';
-import Modal from '../common/Modal.jsx';
 import TextField from 'material-ui/TextField';
+import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import './style.scss';
 
@@ -10,7 +10,7 @@ import './style.scss';
 class Login extends React.Component {
 
   render() {
-    const {open, toggle} = this.props.store;
+    const {open, toggle,} = this.props.store;
     return (
       <div><LoginButton toggle={toggle}/><LoginForm toggle={toggle} open={open}/></div>
     );
@@ -25,22 +25,21 @@ export default Login;
 export class LoginForm extends React.Component {
 
   render() {
-    const {open, toggle} = this.props;
-    if (!open)
-      return null;
+    const {open, toggle,} = this.props;
     return (
-      <Modal toggle={toggle} title="فرم ورود" sm>
+      <Dialog title="فرم ورود" open={open} contentStyle={{width:'300px'}} titleClassName='text-xs-center' onRequestClose={toggle}>
         <form>
-          <TextField hintText="Email Field" floatingLabelText="Email" type="text"/>
-          <TextField hintText="Password Field" floatingLabelText="Password" type="password"/>
+          <TextField floatingLabelText="پست الکترونیک" type="text"/>
+          <br/>
+          <TextField floatingLabelText="پسورد" type="password"/>
         </form>
-      </Modal>
+      </Dialog>
     );
   }
 }
 LoginForm.propTypes = {
   open: React.PropTypes.bool,
-  toggle: React.PropTypes.func
+  toggle: React.PropTypes.func,
 };
 
 export const LoginButton = ({toggle}) => {
