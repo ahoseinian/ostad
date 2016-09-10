@@ -7,7 +7,15 @@ import Nav from './components/nav/Nav.jsx';
 import DevTools from 'mobx-react-devtools';
 import Login from './components/auth/Login.jsx';
 import LoginStore from './stores/login';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
+// Needed for onTouchTap
+// http://stackoverflow.com/a/34015469/988941
+injectTapEventPlugin();
+
+const muiTheme = getMuiTheme();
 class App extends Component {
   render() {
     return (
@@ -23,14 +31,18 @@ class App extends Component {
   }
 }
 App.propTypes = {
-  children: React.PropTypes.node
+  children: React.PropTypes.node,
+  history: React.PropTypes.object
 };
 
 render((
-  <Router history={hashHistory}>
-    <Route path="/" component={App}>
-      <IndexRoute component={Home}/>
-      <Route path="about" component={About}/>
-    </Route>
-  </Router>
+  <MuiThemeProvider muiTheme={muiTheme}>
+
+    <Router history={hashHistory}>
+      <Route path="/" component={App}>
+        <IndexRoute component={Home}/>
+        <Route path="about" component={About}/>
+      </Route>
+    </Router>
+  </MuiThemeProvider>
 ), document.getElementById('app'));

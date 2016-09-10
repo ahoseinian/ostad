@@ -1,51 +1,44 @@
-'use strict';
 import React from 'react';
-import {Link, IndexLink} from 'react-router';
-import classNames from 'classnames';
-import './style.scss';
+import AppBar from 'material-ui/AppBar';
+import {IndexLink, Link,} from 'react-router';
+import Drawer from 'material-ui/Drawer';
+import MenuItem from 'material-ui/MenuItem';
+import IconButton from 'material-ui/IconButton';
 
-class Nav extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      collapse: true
-    };
-  }
-  toggle() {
-    this.setState({
-      collapse: !this.state.collapse
-    });
-  }
-  render() {
-    const {collapse} = this.state;
-    const navClasses = classNames('navbar-toggleable-xs', {collapse: collapse});
-    return (
-      <nav className="navbar navbar-light navbar-fixed-top text-xs-right">
-        <button className="navbar-toggler hidden-sm-up " type="button" onClick={this.toggle.bind(this)}>
-          &#9776;
-        </button>
-        <div className={navClasses}>
-          <ul className="nav navbar-nav">
-            <li className="nav-item">
-              <IndexLink to="/" className="nav-link" activeClassName="active">
-                خانه
-              </IndexLink>
-            </li>
-            <li className="nav-item">
-              <Link to="/about" className="nav-link" activeClassName="active">
-                درباره ما
-              </Link>
-            </li>
-
-          </ul>
-        </div>
-      </nav>
-    );
-  }
-
-}
-Nav.propTypes = {
-  current: React.PropTypes.number
-};
+const Nav = () => (
+  <AppBar iconElementRight={< DrawerSimpleExample />}/>
+);
 
 export default Nav;
+
+class DrawerSimpleExample extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false
+    };
+  }
+
+  handleToggle = () => this.setState({
+    open: !this.state.open
+  });
+
+  render() {
+    const ToggleButton = <IconButton iconClassName="fa fa-bars" onTouchTap={this.handleToggle}/>;
+    return (
+      <div>
+        {ToggleButton}
+        <Drawer open={this.state.open} openSecondary={true}>
+          <AppBar title="Ostad" iconElementLeft={ToggleButton}/>
+          <Link to="/about">
+            <MenuItem>Menu Item 2</MenuItem>
+          </Link>
+          <IndexLink to="/">
+            <MenuItem>Menu Item</MenuItem>
+          </IndexLink>
+        </Drawer>
+      </div>
+    );
+  }
+}

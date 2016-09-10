@@ -2,6 +2,7 @@
 import React from 'react';
 import {observer} from 'mobx-react';
 import Modal from '../common/Modal.jsx';
+import TextField from 'material-ui/TextField';
 import './style.scss';
 
 @observer
@@ -27,8 +28,11 @@ export class LoginForm extends React.Component {
     if (!open)
       return null;
     return (
-      <Modal toggle={toggle} title="فرم ورود">
-        Login Form
+      <Modal toggle={toggle} title="فرم ورود" sm>
+        <form>
+          <TextField hintText="Email Field" floatingLabelText="Email" type="text"/>
+          <TextField hintText="Password Field" floatingLabelText="Password" type="password"/>
+        </form>
       </Modal>
     );
   }
