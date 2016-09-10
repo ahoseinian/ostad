@@ -1,1 +1,11 @@
 @import '~bootstrap/scss/bootstrap-grid.scss';
+@font-face {
+    font-family: 'Yekan';
+    src: url(./YekanWeb-Regular.woff);
+}
+body{
+  font-family: 'Yekan';
+}
+a{
+  text-decoration: none;
+}

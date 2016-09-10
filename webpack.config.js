@@ -26,10 +26,15 @@ module.exports = {
       test: /\.(scss|css)$/,
       loader: extractCSS.extract(['css', 'sass'])
     }, {
-      test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
       // Limiting the size of the woff fonts breaks font-awesome ONLY for the extract text plugin
       // loader: "url?limit=10000"
-      loader: 'url'
+      loader: 'url',
+      query: {
+        limit: 50000,
+        mimetype: 'application/font-woff',
+        name: './fonts/[hash].[ext]'
+      }
     }, {
       test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
       loader: 'file?name=css/fonts/[hash].[ext]'

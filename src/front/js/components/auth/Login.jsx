@@ -3,6 +3,7 @@ import React from 'react';
 import {observer} from 'mobx-react';
 import Modal from '../common/Modal.jsx';
 import TextField from 'material-ui/TextField';
+import FlatButton from 'material-ui/FlatButton';
 import './style.scss';
 
 @observer
@@ -43,7 +44,7 @@ LoginForm.propTypes = {
 };
 
 export const LoginButton = ({toggle}) => {
-  return <button className="btn btn-outline-info  m-a-1" onClick={toggle}>ورود</button>;
+  return <FlatButton onTouchTap={toggle} label="ورود"/>;
 };
 
 LoginButton.propTypes = {

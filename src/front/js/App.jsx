@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
 import {render} from 'react-dom';
-import {Router, Route, IndexRoute, hashHistory} from 'react-router';
+import {Router, Route, IndexRoute, hashHistory,} from 'react-router';
 import Home from './components/Home.jsx';
 import {About} from './components/About.jsx';
 import Nav from './components/nav/Nav.jsx';
 import DevTools from 'mobx-react-devtools';
-import Login from './components/auth/Login.jsx';
-import LoginStore from './stores/login';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -15,15 +13,14 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
 
-const muiTheme = getMuiTheme();
+const muiTheme = getMuiTheme({fontFamily: 'Yekan', isRtl: true});
 class App extends Component {
   render() {
     return (
       <div>
         <DevTools/>
         <Nav/>
-        <Login store={LoginStore}/>
-        <div>
+        <div className="container">
           {this.props.children}
         </div>
       </div>
@@ -32,7 +29,7 @@ class App extends Component {
 }
 App.propTypes = {
   children: React.PropTypes.node,
-  history: React.PropTypes.object
+  history: React.PropTypes.object,
 };
 
 render((
