@@ -1,6 +1,6 @@
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
-import {IndexLink, Link} from 'react-router';
+import {IndexLink, Link,} from 'react-router';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
@@ -33,8 +33,8 @@ class DrawerSimpleExample extends React.Component {
     return (
       <div>
         {ToggleButton}
-        <Drawer open={this.state.open}>
-          <AppBar  iconElementLeft={ToggleButton}/>
+        <Drawer open={this.state.open} docked={false} openSecondary={true} onRequestChange={(open) => this.setState({open})}>
+          <AppBar iconElementLeft={ToggleButton}/>
           <IndexLink to="/">
             <MenuItem>خانه</MenuItem>
           </IndexLink>

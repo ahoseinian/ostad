@@ -11,7 +11,7 @@ import './style.scss';
 class Login extends React.Component {
 
   render() {
-    const {open, toggle,} = this.props.store;
+    const {open, toggle} = this.props.store;
     return (
       <div><LoginButton toggle={toggle}/><LoginForm toggle={toggle} open={open}/></div>
     );
@@ -25,7 +25,9 @@ export default Login;
 
 export class LoginForm extends React.Component {
   render() {
-    const floatingLabelStyle= {right:0};
+    const floatingLabelStyle = {
+      right: 0
+    };
     const {open, toggle} = this.props;
     return (
       <Dialog title="فرم ورود" open={open} contentStyle={{
@@ -34,7 +36,7 @@ export class LoginForm extends React.Component {
         <form>
           <TextField floatingLabelText="پست الکترونیک" type="text" floatingLabelStyle={floatingLabelStyle}/>
           <br/>
-          <TextField floatingLabelText="پسورد" type="password"  floatingLabelStyle={floatingLabelStyle}/>
+          <TextField floatingLabelText="پسورد" type="password" floatingLabelStyle={floatingLabelStyle}/>
           <RaisedButton label="ورود" primary fullWidth/>
         </form>
       </Dialog>
@@ -43,7 +45,7 @@ export class LoginForm extends React.Component {
 }
 LoginForm.propTypes = {
   open: React.PropTypes.bool,
-  toggle: React.PropTypes.func,
+  toggle: React.PropTypes.func
 };
 
 export const LoginButton = ({toggle}) => {
