@@ -4,11 +4,9 @@ import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import RaisedButton from 'material-ui/RaisedButton';
 import Icon from '../common/icon.jsx';
-import './style.scss';
 
 
 export class LoginForm extends React.Component {
-
   render() {
     // const floatingLabelStyle = {
     //   right: 0
