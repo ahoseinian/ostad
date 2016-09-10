@@ -1,10 +1,9 @@
-import {observable} from 'mobx';
+import { observable } from 'mobx';
 
 class LoginStore {
   @observable open = false;
-  toggle=()=>{
-    this.open = !this.open;
-  }
+  @observable user = document.getElementById('app').dataset.user ? JSON.parse(document.getElementById('app').dataset.user) : false;
+  toggle = () => this.open = !this.open;
 }
 
 export default new LoginStore();
