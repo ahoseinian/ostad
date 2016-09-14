@@ -3,6 +3,7 @@ import AppBar from 'material-ui/AppBar';
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 import {IndexLink, Link} from 'react-router';
 import Drawer from 'material-ui/Drawer';
+import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import {LoginForm} from '../auth/Login.jsx';
@@ -25,7 +26,7 @@ class Nav extends React.Component {
           {loginBtn}
         </ToolbarGroup>
         <ToolbarGroup>
-          <ToolbarTitle text={user.displayName} className="text-uppercase"/>
+          <ToolbarTitle text={user.displayName} className="text-uppercase small" style={{fontSize:'0.8rem'}}/>
           <ToolbarSeparator />
           <DrawerSimpleExample/>
         </ToolbarGroup>
@@ -49,18 +50,20 @@ class DrawerSimpleExample extends React.Component {
     open: !this.state.open
   });
 
+
   render() {
     const ToggleButton = <IconButton iconClassName="fa fa-bars" onTouchTap={this.handleToggle}/>;
     return (
       <div>
         {ToggleButton}
-        <Drawer open={this.state.open} docked={false} openSecondary={true} onRequestChange={(open) => this.setState({open})}>
+        <Drawer open={this.state.open} docked={false} openSecondary={true} onRequestChange={this.handleToggle}>
           <AppBar iconElementLeft={ToggleButton}/>
+
           <IndexLink to="/">
-            <MenuItem>خانه</MenuItem>
+            <MenuItem onTouchTap={this.handleToggle}>خانه</MenuItem>
           </IndexLink>
           <Link to="/about">
-            <MenuItem>درباره ما</MenuItem>
+            <MenuItem onTouchTap={this.handleToggle}>درباره ما</MenuItem>
           </Link>
         </Drawer>
       </div>
