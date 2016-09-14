@@ -3,12 +3,12 @@ import AppBar from 'material-ui/AppBar';
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 import {IndexLink, Link} from 'react-router';
 import Drawer from 'material-ui/Drawer';
-import Menu from 'material-ui/Menu';
-import MenuItem from 'material-ui/MenuItem';
-import IconButton from 'material-ui/IconButton';
-import {LoginForm} from '../auth/Login.jsx';
+import {LoginForm} from '../user/Login.jsx';
+import SaveLink from '../user/SaveLink.jsx';
 import LoginStore from '../../stores/login';
 import RaisedButton from 'material-ui/RaisedButton';
+import IconButton from 'material-ui/IconButton';
+import MenuItem from 'material-ui/MenuItem';
 import {observer} from 'mobx-react';
 
 @observer
@@ -26,8 +26,10 @@ class Nav extends React.Component {
           {loginBtn}
         </ToolbarGroup>
         <ToolbarGroup>
-          <ToolbarTitle text={user.displayName} className="text-uppercase small" style={{fontSize:'0.8rem'}}/>
-          <ToolbarSeparator />
+          <ToolbarTitle text={user.displayName} className="text-uppercase small" style={{
+            fontSize: '0.8rem'
+          }}/>
+          <ToolbarSeparator/>
           <DrawerSimpleExample/>
         </ToolbarGroup>
       </Toolbar>
@@ -50,7 +52,6 @@ class DrawerSimpleExample extends React.Component {
     open: !this.state.open
   });
 
-
   render() {
     const ToggleButton = <IconButton iconClassName="fa fa-bars" onTouchTap={this.handleToggle}/>;
     return (
@@ -65,6 +66,7 @@ class DrawerSimpleExample extends React.Component {
           <Link to="/about">
             <MenuItem onTouchTap={this.handleToggle}>درباره ما</MenuItem>
           </Link>
+          <SaveLink/>
         </Drawer>
       </div>
     );
